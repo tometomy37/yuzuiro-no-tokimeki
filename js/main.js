@@ -1,6 +1,8 @@
+// モバイル用ナビゲーション
 (() => {
   const toggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.global-nav');
+  const nav = document.querySelector('#global-nav');
+
   if (!toggle || !nav) return;
 
   const closeMenu = () => {
@@ -20,5 +22,11 @@
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeMenu();
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!nav.contains(event.target) && !toggle.contains(event.target)) {
+      closeMenu();
+    }
   });
 })();
